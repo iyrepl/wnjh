@@ -12,7 +12,7 @@ jobs:
           name: Insall Dependices
           command: pip3 install requests
       - run: 
-          name: Begin
+          name: Extend
           command: python3 run.py -u $USERNAME -p $PASSWORD
 workflows:
   version: 2
@@ -22,7 +22,7 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "12 18 * * *"
+          cron: "12 17 * * *"
           filters:
             branches:
               only: 
