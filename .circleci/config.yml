@@ -1,13 +1,13 @@
 jobs:
   build:
     docker:
-      - image: cimg/python:3.10.1
+      - image: cimg/python:3.10.6
     resource_class: small
     steps:
       - checkout
       - run: 
           name: Upgrade pip
-          command: /home/circleci/.pyenv/versions/3.10.1/bin/python3.10 -m pip install --upgrade pip
+          command: /home/circleci/.pyenv/versions/3.10.6/bin/python3.10 -m pip install --upgrade pip
       - run: 
           name: Insall Dependices
           command: pip3 install requests
@@ -20,12 +20,9 @@ workflows:
     jobs:
       - build
   nightly:
-    triggers:
-      - schedule:
-          cron: "12 17 * * *"
-          filters:
-            branches:
-              only: 
-                - main
+    when:
+      and:
+      - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
+      - equal: [ "extend", << pipeline.schedule.name >> ]
     jobs:
       - build
