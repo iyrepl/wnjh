@@ -20,9 +20,5 @@ workflows:
     jobs:
       - build
   nightly:
-    when:
-      and:
-      - equal: [ scheduled_pipeline, << pipeline.trigger_source >> ]
-      - equal: [ "extend", << pipeline.schedule.name >> ]
     jobs:
       - build
