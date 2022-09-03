@@ -1,5 +1,7 @@
+version: 2.1
+
 jobs:
-  build:
+  extend:
     docker:
       - image: cimg/python:3.10.6
     resource_class: small
@@ -15,10 +17,6 @@ jobs:
           name: Extend
           command: python3 run.py -u $USERNAME -p $PASSWORD
 workflows:
-  version: 2
-  commit:
+  extend:
     jobs:
-      - build
-  nightly:
-    jobs:
-      - build
+      - extend
