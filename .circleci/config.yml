@@ -12,7 +12,7 @@ jobs:
           command: /home/circleci/.pyenv/versions/3.11.1/bin/python3.11 -m pip install --upgrade pip
       - run: 
           name: Insall Dependices
-          command: pip3 install requests
+          command: pip3 install requests pycpanel
       - run: 
           name: Extend
           command: python3 run.py
