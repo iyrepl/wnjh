@@ -1,15 +1,18 @@
-import argparse
+import requests
 
-from freenom import FreeNom
+url = 'https://panel.ct8.pl/login/'
+username = 'iytest'
+password = 'Tsglockey!1'
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0',
+}
+data = {
+    'user': username,
+    'pass': password,
+}
 
-# args
-parser = argparse.ArgumentParser()
-parser.add_argument('-u', '--username', type=str)
-parser.add_argument('-p', '--password', type=str)
-args = parser.parse_args()
-
-username = args.username
-password = args.password
-
-instance = FreeNom(username, password)
-instance.renew()
+response = requests.post(url, headers=headers, data=data)
+if response.status_code == 200:
+    print "Successfully logged in as {username}".format(username=username)
+else:
+    print "Login unsuccessful: HTTP/{status_code}".format(status_code=response.status_code
