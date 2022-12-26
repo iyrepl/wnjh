@@ -3,19 +3,23 @@ version: 2.1
 jobs:
   extend:
     docker:
-      - image: cimg/python:3.10.6
+      - image: cimg/python:3.11.1
     resource_class: small
     steps:
       - checkout
       - run: 
           name: Upgrade pip
-          command: /home/circleci/.pyenv/versions/3.10.6/bin/python3.10 -m pip install --upgrade pip
+          command: /home/circleci/.pyenv/versions/3.11.1/bin/python3.11 -m pip install --upgrade pip
       - run: 
           name: Insall Dependices
           command: pip3 install requests
       - run: 
+          name: Insall Dependices
+          command: pip3 install requests selenium io sys
+          
+      - run: 
           name: Extend
-          command: python3 run.py -u $USERNAME -p $PASSWORD
+          command: python3 run.py
 workflows:
   extend:
     jobs:
