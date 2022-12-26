@@ -13,6 +13,6 @@ data = {
 
 response = requests.post(url, headers=headers, data=data)
 if response.status_code == 200:
-    print "Successfully logged in as {username}".format(username=username)
+    print("Successfully logged in as {username}".format(username=username))
 else:
-    print "Login unsuccessful: HTTP/{status_code}".format(status_code=response.status_code
+    print("Login unsuccessful: HTTP/{status_code}".format(status_code=response.status_code))
