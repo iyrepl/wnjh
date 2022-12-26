@@ -14,10 +14,6 @@ jobs:
           name: Insall Dependices
           command: pip3 install requests
       - run: 
-          name: Insall Dependices
-          command: pip3 install requests selenium io sys
-          
-      - run: 
           name: Extend
           command: python3 run.py
 workflows:
